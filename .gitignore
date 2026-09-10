@@ -1,0 +1,17 @@
+# Bancos de dados locais (gerados via scripts)
+*.db
+*.sqlite
+*.sqlite3
+database/*.db
+
+# Variáveis de ambiente e segredos
+.env
+
+# Python e Testes
+__pycache__/
+*.pyc
+.pytest_cache/
+.coverage
+
+# Sistema Operacional
+.DS_Store
