@@ -141,6 +141,15 @@ QueryRunner/
 
 ---
 
+## 🔮 Análise Crítica & Próximos Passos (Roadmap de Engenharia)
+
+Embora o agente tenha atingido **100% de conformidade no Golden Dataset de 8 casos** do SPEC, reconhecemos as seguintes fronteiras de evolução para um ambiente de escala enterprise:
+
+1. **Amostragem Estatística:** Expandir a suíte de avaliação de 8 para mais de 50 cenários, incluindo dialetos regionais, gírias operacionais e ruído de digitação comum em salas de despacho sob pressão.
+2. **Avaliação Semântica (LLM-as-a-Judge):** Evoluir as asserções baseadas em substrings para frameworks de avaliação semântica automatizada (como G-Eval / Ragas).
+3. **Guardrails em Camadas Múltiplas:** Implementar NeMo Guardrails ou Llama-Guard para mitigar ataques sofisticados de injeção de prompt antes do orquestrador ReAct.
+
+
 ## 📄 Licença & Autoria
-Desenvolvido como parte do **PBL 1 da Pós-Graduação em Inteligência Artificial da FIAP**.
+Desenvolvido como parte do **PBL 1 da Graduação em Inteligência Artificial da FIAP**.
 Distribuído sob a licença MIT.

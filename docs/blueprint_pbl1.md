@@ -119,3 +119,14 @@ Toda resposta emitida pelo QueryRunner AI inclui:
 1. **Instrução SQL Executada:** Aberta para conferência imediata do operador.
 2. **Telemetria de Ferramentas:** Relação dos argumentos JSON passados e retornos da base de dados.
 3. **Conformidade LGPD:** Garantia de que nenhum dado sensível (CPF, telefone ou cartões) é solicitado, deduzido ou manipulado.
+
+---
+
+## 7. Limitações Conhecidas & Roadmap Metodológico (Enterprise Readiness)
+
+Embora o agente tenha atingido 100,0% de conformidade nos 8 cenários oficiais do SPEC.md, a transição para um ambiente corporativo de larga escala demanda as seguintes evoluções de engenharia:
+
+1. **Expansão da Amostragem Estatística:** Ampliação do Golden Dataset de N=8 para N=50+, introduzindo ruído de digitação, dialetos operacionais regionais e ambiguidade deliberada.
+2. **Avaliação Semântica (LLM-as-a-Judge):** Migração de asserções determinísticas de substring para frameworks semânticos como G-Eval e Ragas.
+3. **Defesa em Profundidade (NeMo Guardrails):** Inclusão de camada de triagem semântica antes do orquestrador ReAct para contenção antecipada de injeções de prompt e jailbreaks.
+
