@@ -4,6 +4,16 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
+# Suporte automático para Streamlit Community Cloud (lê de st.secrets se disponível)
+try:
+    import streamlit as st
+    if hasattr(st, "secrets"):
+        for key in ["GEMINI_API_KEY", "OPENAI_API_KEY", "GROQ_API_KEY", "LLM_BASE_URL", "LLM_MODEL"]:
+            if key in st.secrets and not os.getenv(key):
+                os.environ[key] = str(st.secrets[key])
+except Exception:
+    pass
+
 class Settings:
     # Segredos
     GEMINI_API_KEY: str = (

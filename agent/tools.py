@@ -14,10 +14,27 @@ import uuid
 # Caminho padrão do banco de dadosSQLite
 DEFAULT_DB_PATH = Path(__file__).resolve().parent.parent / "database" / "delivery.db"
 
+def _init_db_if_needed(target_path: Path) -> None:
+    """Inicializa o banco SQLite a partir do schema e seed se o arquivo não existir (essencial para deploy em nuvem)."""
+    if not target_path.exists() or target_path.stat().st_size == 0:
+        target_path.parent.mkdir(parents=True, exist_ok=True)
+        schema_file = target_path.parent / "schema.sql"
+        seed_file = target_path.parent / "seed_data.sql"
+        if schema_file.exists():
+            conn = sqlite3.connect(target_path)
+            with open(schema_file, "r", encoding="utf-8") as f:
+                conn.executescript(f.read())
+            if seed_file.exists():
+                with open(seed_file, "r", encoding="utf-8") as f:
+                    conn.executescript(f.read())
+            conn.close()
+
+
 def get_connection(db_path: Optional[Path] = None) -> sqlite3.Connection:
     """Obtém conexão com o banco de dados SQLite retornando linhas como dicionarios"""
 
     target_path = Path(db_path) if db_path else DEFAULT_DB_PATH
+    _init_db_if_needed(target_path)
     conn = sqlite3.connect(target_path)
     conn.row_factory = sqlite3.Row
     conn.execute("PRAGMA foreign_keys = ON;")
