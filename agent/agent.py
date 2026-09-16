@@ -5,6 +5,7 @@ Metodologia: Spec-Driven Development (conforme Seções 3, 4 e 5 do SPEC.md)
 
 import json
 import logging
+import re
 import time
 from typing import Dict, Any, List, Optional
 from openai import OpenAI
@@ -96,12 +97,20 @@ class QueryRunnerAgent:
                     break
                 except Exception as e:
                     err_msg = str(e)
-                    is_transient = any(code in err_msg for code in ["503", "429", "UNAVAILABLE", "high demand"])
+                    is_transient = any(code in err_msg for code in ["503", "429", "UNAVAILABLE", "RESOURCE_EXHAUSTED", "high demand", "Quota exceeded"])
                     if is_transient and attempt < max_retries:
-                        sleep_time = 2 * attempt
+                        # Extrai o tempo de espera informado pelo Google (ex: "retry in 19.6s")
+                        delay_match = re.search(r"retry in (\d+(?:\.\d+)?)s", err_msg, re.IGNORECASE)
+                        if delay_match:
+                            sleep_time = float(delay_match.group(1)) + 1.5
+                        elif "429" in err_msg or "RESOURCE_EXHAUSTED" in err_msg:
+                            sleep_time = 15.0 * attempt
+                        else:
+                            sleep_time = 2.0 * attempt
+
                         logger.warning(
                             f"Instabilidade transitória na API ({err_msg}). "
-                            f"Tentativa {attempt}/{max_retries} em {sleep_time}s..."
+                            f"Aguardando {sleep_time:.1f}s antes da tentativa {attempt + 1}/{max_retries}..."
                         )
                         time.sleep(sleep_time)
                         continue
