@@ -6,6 +6,8 @@ database/*.db
 
 # Variáveis de ambiente e segredos
 .env
+.venv/
+venv/
 
 # Python e Testes
 __pycache__/
