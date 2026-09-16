@@ -7,7 +7,7 @@
 [![Golden Dataset](https://img.shields.io/badge/Golden%20Dataset-100%25%20Acur%C3%A1cia-success)](tests/run_evals.py)
 [![FIAP](https://img.shields.io/badge/FIAP-AI%20PBL%201-ed145b.svg)](https://www.fiap.com.br/)
 
-> **Co-piloto autônomo de inteligência e despacho logístico para salas de controle (Control Tower). Converte solicitações operacionais em linguagem natural (PT-BR) em consultas SQL determinísticas de somente-leitura, análises heurísticas de risco e emissão governada de compensações financeiras.**
+> **Co-piloto autônomo de inteligência e despacho logístico para salas de controle (Control Tower). Converte solicitações operacionais em linguagem natural (PT-BR) em consultas analíticas seguras no SQLite (com guardrails de somente-leitura), avaliação heurística de risco e ações transacionais governadas (como a emissão e persistência de vouchers compensatórios).**
 
 ---
 

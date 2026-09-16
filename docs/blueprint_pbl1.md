@@ -23,7 +23,7 @@ Em horários de pico, operadores gastam de 3 a 7 minutos por incidente para:
 Esse atrito cognitivo retarda a tomada de decisões críticas e gera custos de estorno desnecessários.
 
 ### 1.3 A Solução: QueryRunner AI
-Um agente autônomo governado que conecta operadores à base de dados relacional via **linguagem natural (PT-BR)**, executando queries determinísticas de somente-leitura, acionando heurísticas prescritivas de risco e disparando compensações financeiras com travas de segurança e alçadas pré-fixadas.
+Um agente autônomo governado que conecta operadores à base de dados relacional via **linguagem natural (PT-BR)**, combinando consultas analíticas com guardrails estritos de somente-leitura, avaliação heurística de risco e execução de ações transacionais governadas (como a emissão e persistência auditável de vouchers de compensação financeira).
 
 ---
 
